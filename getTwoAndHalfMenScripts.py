@@ -16,6 +16,8 @@ def getScriptsInList():
 			    print("An error occured.")
 
 			soup = BeautifulSoup(page, 'html.parser')
+			# for br in soup.find_all("\n"):
+			# 	br.replace_with(" ")
 			for br in soup.find_all("br"):
 			    br.replace_with("\n")
 			content_lis = soup.find_all('div', attrs={'class': regex})
@@ -38,7 +40,7 @@ def getScriptsInList():
 	return content
 
 def writeInFile(fileName,contents):
-	file=open(fileName,"w")
+	file=open(fileName,"w",encoding='utf-8')
 	# print(type(content[0]))
 	for i in contents:
 		file.write(i)
